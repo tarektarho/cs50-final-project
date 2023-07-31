@@ -1,6 +1,6 @@
 # Todo App
 
-## Video Demo: <URL HERE>
+## Video Demo: <https://youtu.be/Z6l46ni1Y-g>
 
 ## **Description:**
 
@@ -91,6 +91,7 @@ The Todo App comes with the following features:
   ├── db.py
   ├── requirements.txt
   ├── static/
+  |   ├── icons
   │   └── styles.css
   ├── templates/
   │   ├── addTodo.html
@@ -102,6 +103,7 @@ The Todo App comes with the following features:
   │   ├── helpers.py
   │   └── http_code.py
   ├── models/
+  |   ├── todo.py
   │   └── user.py
   ├── routes/
   │   ├── __init__.py
