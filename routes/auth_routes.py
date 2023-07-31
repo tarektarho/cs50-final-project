@@ -122,6 +122,8 @@ def update_password():
     new_password = request.form.get("new_password")
     confirmation = request.form.get("confirmation")
 
+    print(new_password)
+
     # Check if the user submitted the password update form via POST
     if request.method == "POST":
         # Query the database for the user's data based on the session's user_id

@@ -66,7 +66,7 @@ python -m venv venv
 - Run the Flask app:
 
 ```basah
-python app.py
+flask run
 ```
 
 - Open your web browser and visit http://localhost:5000 to access the Todo App.
