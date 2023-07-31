@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Todo
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid d-flex justify-content-center flex-column align-items-center">
+    <form action="{{ url_for('todo.get_todos') }}" method="post">
+        <div class="container-fluid d-flex flex-row justify-content-center align-items-center">
+            <div class="mb-3 pe-2">
+                <label for="task" class="mx-auto w-auto"> Todo: </label>
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" id="task" name="task" placeholder="Task" type="text">
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Add Todo</button>
+    </form>
+    {% if todos %}
+    <div class="p-2 d-flex align-items-center w-100 flex-wrap flex-row justify-content-center">
+        {% for todo in todos %}
+        <div class="card mb-3 me-3" style="width: 18rem;">
+            <div class="card-header">
+                Task
+              </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ todo.task }}</h5>
+              <p class="card-text">Completed: {{todo.completed}}</p>
+              <p class="card-text"> </p>
+            </div>
+            <div class="card-footer text-body-secondary">
+                Created at: {{ todo.created_at }}
+              </div>
+          </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

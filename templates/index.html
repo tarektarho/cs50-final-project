@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Todos
+{% endblock %}
+
+{% block main %}
+    <h3>Overview</h3>
+    {% if todos %}
+    <table class="table table-responsive table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Task</th>
+                <th scope="col">Completed</th>
+                <th scope="col">Check</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+                <tr>
+                    <td><h6>{{ todo.task }}</h6></td>
+                    <td>
+                        {% if todo.completed %}
+                        <i class="bi bi-lightbulb-fill" title="{{ todo.completed }}"></i>
+                        {% else %}
+                        <i class="bi bi-lightbulb" title="{{ todo.completed }}"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="/checked/{{todo.id}}" method="post">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-check-circle-fill"></i></button>
+                            <input hidden id="is_checked" name="is_checked" value="{{todo.completed}}" />
+                        </form>
+                      </td>
+                      <td>
+                        <form action="/delete/{{todo.id}}" method="post">
+                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div>
+        <div class="alert alert-warning" role="alert">
+            Todo list is empty click on the button below to add more!
+          </div>
+        <a type="button" class="btn btn-primary" href="/todos">Add Todo</a>
+    </div>
+    {% endif %}
+
+{% endblock %}
+
